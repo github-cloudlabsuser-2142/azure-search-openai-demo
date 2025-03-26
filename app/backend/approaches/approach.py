@@ -137,7 +137,27 @@ class Approach(ABC):
             filters.append(security_filter)
         return None if len(filters) == 0 else " and ".join(filters)
 
+    """
+    Perform a search using the specified parameters.
+
+    Args:
+        top (int): The maximum number of results to return.
+        query_text (Optional[str]): The text query to search for.
+        filter (Optional[str]): The filter to apply to the search results.
+        vectors (List[VectorQuery]): The vector queries to use for the search.
+        use_text_search (bool): Whether to use text search.
+        use_vector_search (bool): Whether to use vector search.
+        use_semantic_ranker (bool): Whether to use the semantic ranker.
+        use_semantic_captions (bool): Whether to use semantic captions.
+        minimum_search_score (Optional[float]): The minimum search score for a document to be included in the results.
+        minimum_reranker_score (Optional[float]): The minimum reranker score for a document to be included in the results.
+        use_query_rewriting (Optional[bool], optional): Whether to use query rewriting. Defaults to None.
+
+    Returns:
+        List[Document]: A list of documents that match the search criteria.
+    """
     async def search(
+        
         self,
         top: int,
         query_text: Optional[str],
